@@ -1,0 +1,38 @@
+STUFF THAT WE NEED TO DO FOR THE GAMEJAM
+
+*** PLAYER STUFF ***
+- Finish the player movement
+- Finish making gun
+- Make gun actually shoot projectiles and such
+- Finish adding jump mechanics
+
+*** ACCESSORY STUFF ***
+- Create ammo refill cans
+- Add functionality to them
+
+*** ENEMY STUFF ***
+- Make enemies a thing
+- Make killing them grant the player another jump
+- Make player touching enemy from under result in death
+
+*** LEVEL PROGRESSION ***
+- Make finish line sprites
+- Make touching the finish line take you to the next level
+
+*** LEVEL DESIGN ***
+- Actually design levels that are fun
+- Playtest to an extent
+- Implement levels mario maker style
+
+*** SOUND EFFECTS ***
+- Create sound effects for the game
+- Create song that fits the game and place it in (or steal something from online)
+- Make them good and put them in
+
+*** SPRITES ***
+- Make sprites for player and gun (unless we want to keep the placeholder sprites)
+- Choose the reset stuff we want
+- Assign the sprites to each prefab as needed
+
+---BE DONE WITH THE PROJECT---
+
