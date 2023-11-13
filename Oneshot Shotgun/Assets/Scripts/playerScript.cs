@@ -13,21 +13,11 @@ public class playerScript : MonoBehaviour
     private bool rightPressed;
     private bool mousePressed;
     private bool jumping = false;
-    private int canJump = 0;
+    private bool canJump = false;
 
     [SerializeField] private float SPEED;
     [SerializeField] private float RECOIL;
 
-    private float mousePositionX;
-    private float mousePositionY;
-
-    private float playerPositionX;
-    private float playerPositionY;
-
-    private float difX;
-    private float difY;
-
-    private float angle;
 
     // Start is called before the first frame update
     void Start()
@@ -48,26 +38,29 @@ public class playerScript : MonoBehaviour
 
         if (collision.gameObject.tag == "Floor") //resets jumps
         {
-            canJump = 1;
+            canJump = true;
         }
     }
 
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(0) && canJump > 0) //controls the first part of the jump
+        float yVel = rb.velocity.y;
+        float XVel = rb.velocity.x;
+
+        if (Input.GetMouseButton(0) && canJump) //controls the first part of the jump
         {
             jumping = true;
-            canJump--;
+            canJump = false;
         }
 
-        if (!jumping) { //curently bugged. Shit aint working because of complication with the current leftright movement
-        float yVel = rb.velocity.y;
+        if (canJump) { //curently bugged. Shit aint working because of complication with the current leftright movement
         dirX = Input.GetAxisRaw("Horizontal");
-        //rb.velocity = new Vector2(dirX * SPEED, yVel);
+        rb.velocity = new Vector2(dirX * SPEED, yVel);
         }
 
-        if (jumping) //Controls the jumping
+        if (jumping && !canJump) //Controls the jumping
         {
+            rb.velocity = new Vector2(XVel, yVel);
             var usingAngle = getAngle();
             var usingX = RECOIL * Mathf.Cos(usingAngle); //Trig stuff I'm super proud of
             var usingY = RECOIL * Mathf.Sin(usingAngle);
@@ -80,16 +73,10 @@ public class playerScript : MonoBehaviour
     {
         var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        mousePositionX = mouseWorldPos.x;
-        mousePositionY = mouseWorldPos.y;
+        float difX = mouseWorldPos.x - rb.transform.position.x;
+        float difY = mouseWorldPos.y - rb.transform.position.y;
 
-        playerPositionX = rb.transform.position.x;
-        playerPositionY = rb.transform.position.y;
-
-        difX = mousePositionX - playerPositionX;
-        difY = mousePositionY - playerPositionY;
-
-        angle = Mathf.Atan(difY / difX);
+        float angle = Mathf.Atan(difY / difX);
 
         if (difX < 0 && difY > 0)
         {
