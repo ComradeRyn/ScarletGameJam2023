@@ -30,6 +30,7 @@ public class playerScript : MonoBehaviour
     {
         leftPressed = Input.GetKeyDown("a"); //useless, dones't do anything at the moment
         rightPressed = Input.GetKeyDown("d");
+        mousePressed = Input.GetMouseButtonDown(0);
 
     }
 
