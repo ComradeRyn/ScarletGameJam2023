@@ -4,7 +4,7 @@ STUFF THAT WE NEED TO DO FOR THE GAMEJAM
 - Finish the player movement
 - Finish making gun
 - Make gun actually shoot projectiles and such
-- Finish adding jump mechanics
+- Finish adding jump mechanics -DONE-
 
 *** ACCESSORY STUFF ***
 - Create ammo refill cans
