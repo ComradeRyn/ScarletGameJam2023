@@ -14,7 +14,11 @@ public class bulletScript : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(this.gameObject);
+        if(collision.gameObject.tag != "Bullet" || collision.gameObject.tag != "Player")
+        {
+            Destroy(this.gameObject);
+        }
+  
     }
 
     // Update is called once per frame
