@@ -37,4 +37,6 @@ public class shotgunRotationScript : MonoBehaviour
 
         return angle * 180/Mathf.PI;
     }
+
+    
 }

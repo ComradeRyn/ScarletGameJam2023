@@ -37,8 +37,9 @@ public class playerScript : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Floor") //resets jumps
+        if (collision.gameObject.tag == "Floor" && !canJump) //resets jumps
         {
+
             canJump = true;
         }
     }
@@ -48,7 +49,7 @@ public class playerScript : MonoBehaviour
         float yVel = rb.velocity.y;
         float XVel = rb.velocity.x;
 
-        if (Input.GetMouseButton(0) && canJump) //controls the first part of the jump
+        if(Input.GetMouseButton(0) && canJump) //controls the first part of the jump
         {
             jumping = true;
             canJump = false;
@@ -89,5 +90,36 @@ public class playerScript : MonoBehaviour
         }
 
         return angle += Mathf.PI;
+    }
+
+    public float getShootAngle() //called in seperate class
+    {
+        var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        float difX = mouseWorldPos.x - rb.transform.position.x;
+        float difY = mouseWorldPos.y - rb.transform.position.y;
+
+        float angle = Mathf.Atan(difY / difX);
+
+        if (difX < 0 && difY > 0)
+        {
+            angle += Mathf.PI;
+        }
+        else if (difX < 0 && difY < 0)
+        {
+            angle += Mathf.PI;
+        }
+
+        return angle;
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("Clicked");
+    }
+
+        public bool getCanJump()
+    {
+        return canJump;
     }
 }

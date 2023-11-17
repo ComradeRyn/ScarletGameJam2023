@@ -12,7 +12,7 @@ public class bulletScript : MonoBehaviour
         col = GetComponent<CircleCollider2D>();
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionStay2D(Collision2D collision)
     {
         Destroy(this.gameObject);
     }

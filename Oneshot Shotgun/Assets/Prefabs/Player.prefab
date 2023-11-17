@@ -179,7 +179,7 @@ MonoBehaviour:
   rb: {fileID: 4230410278425347614}
   collider: {fileID: 8223155240427649709}
   SPEED: 8.5
-  RECOIL: 50
+  RECOIL: 10
 --- !u!1001 &7200428119570351648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -228,6 +228,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4113267295399532993, guid: e37e03960f1cd8c408c1dcada464e297, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 9135408707598983266}
     - target: {fileID: 6546094798052382510, guid: e37e03960f1cd8c408c1dcada464e297, type: 3}
       propertyPath: m_Name
       value: piviotGun
