@@ -45,3 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3259507709
+    locked: 0
+  - name: LAND
+    uniqueID: 1385631435
+    locked: 0
+  - name: Player
+    uniqueID: 2118915351
+    locked: 0
