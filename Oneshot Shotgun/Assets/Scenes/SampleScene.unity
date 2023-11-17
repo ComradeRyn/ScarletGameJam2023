@@ -974,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1039324359231457889, guid: 9e30561b534be0947af6d9b8a7b99a98, type: 3}
       propertyPath: RECOIL
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1039324359231457889, guid: 9e30561b534be0947af6d9b8a7b99a98, type: 3}
       propertyPath: JUMPDELAY

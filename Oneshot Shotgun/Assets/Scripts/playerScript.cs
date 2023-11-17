@@ -7,7 +7,6 @@ public class playerScript : MonoBehaviour
 {
 
     public Rigidbody2D rb; //varaible hell
-    public BoxCollider2D collider;
     private float dirX = 0f;
     private bool mousePressed;
     private bool jumping = false;
@@ -26,7 +25,6 @@ public class playerScript : MonoBehaviour
     {
         jumpDelayTime = JUMPDELAY;
         rb = GetComponent<Rigidbody2D>(); //gets the rb and collider of player
-        collider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -63,7 +61,7 @@ public class playerScript : MonoBehaviour
             canJump = false;
         }
 
-        if (canJump && !mousePressed) { //curently bugged. Shit aint working because of complication with the current leftright movement
+        if (canJump && !mousePressed) {
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * SPEED, yVel);
         }
