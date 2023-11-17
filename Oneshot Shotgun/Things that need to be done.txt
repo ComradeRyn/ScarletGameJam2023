@@ -1,9 +1,9 @@
 STUFF THAT WE NEED TO DO FOR THE GAMEJAM
 
 *** PLAYER STUFF ***
-- Finish the player movement
-- Finish making gun
-- Make gun actually shoot projectiles and such
+- Finish the player movement -DONE-
+- Finish making gun -DONE
+- Make gun actually shoot projectiles and such -DONE-
 - Finish adding jump mechanics -DONE-
 
 *** ACCESSORY STUFF ***

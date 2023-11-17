@@ -11,14 +11,14 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         Enemy = this.gameObject;
-        hitBox = GameObject.Find("hitBox");
+        hitBox = this.gameObject.transform.GetChild(0).gameObject;
         player = GameObject.Find("Player").GetComponent<playerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(hitBox.transform.position);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -26,8 +26,22 @@ public class EnemyScript : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             player.setCanJump(true);
-            Destroy(this.gameObject);
+            Kill();
         }
 
+    }
+
+    public void Kill()
+    {
+        hitBox.GetComponent<BoxCollider2D>().enabled = false;
+        Enemy.GetComponent<BoxCollider2D>().enabled = false;
+        Enemy.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void Respawn()
+    {
+        Enemy.GetComponent<BoxCollider2D>().enabled = true;
+        Enemy.GetComponent<SpriteRenderer>().enabled = true;
+        hitBox.GetComponent<BoxCollider2D>().enabled = true;
     }
 }

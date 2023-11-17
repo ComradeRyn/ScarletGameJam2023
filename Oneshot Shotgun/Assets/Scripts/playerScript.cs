@@ -13,6 +13,7 @@ public class playerScript : MonoBehaviour
     private bool mousePressed;
     private bool jumping = false;
     private bool canJump = true;
+    private bool returnedToGround = true;
 
     [SerializeField] private float SPEED;
     [SerializeField] private float RECOIL;
@@ -50,11 +51,13 @@ public class playerScript : MonoBehaviour
         if ((collision.gameObject.tag == "Floor" || collision.gameObject.tag == "HitBox") && !canJump && jumpDelayTime == JUMPDELAY) //resets jumps
         {
             canJump = true;
+            returnedToGround = true;
         }
 
         if(collision.gameObject.tag == "Enemy")
         {
             respawn();
+            returnedToGround = true;
         }
     }
 
@@ -68,6 +71,7 @@ public class playerScript : MonoBehaviour
             mousePressed = false;
             jumping = true;
             canJump = false;
+            returnedToGround = false;
         }
 
         if (canJump && !mousePressed) {
@@ -146,5 +150,10 @@ public class playerScript : MonoBehaviour
     public void respawn()
     {
         rb.transform.position = respawnPoint.transform.position;
+    }
+
+    public bool getReturnedToGround()
+    {
+        return returnedToGround;
     }
 }
