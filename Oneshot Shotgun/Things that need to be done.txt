@@ -17,8 +17,8 @@ STUFF THAT WE NEED TO DO FOR THE GAMEJAM
 - Make player touching enemy from not good place kill you
 
 *** LEVEL PROGRESSION ***
-- Make finish line sprites
-- Make touching the finish line take you to the next level
+- Make finish line sprites **DONE!**
+- Make touching the finish line take you to the next level **DONE!**
 
 *** LEVEL DESIGN ***
 - Actually design levels that are fun
