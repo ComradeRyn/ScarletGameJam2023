@@ -9,37 +9,44 @@ public class playerScript : MonoBehaviour
     public Rigidbody2D rb; //varaible hell
     public BoxCollider2D collider;
     private float dirX = 0f;
-    private bool leftPressed;
-    private bool rightPressed;
     private bool mousePressed;
     private bool jumping = false;
-    private bool canJump = false;
+    private bool canJump = true;
 
     [SerializeField] private float SPEED;
     [SerializeField] private float RECOIL;
+
+    [SerializeField] private int JUMPDELAY;
+    private int jumpDelayTime;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        jumpDelayTime = JUMPDELAY;
         rb = GetComponent<Rigidbody2D>(); //gets the rb and collider of player
         collider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
     {
-        leftPressed = Input.GetKeyDown("a"); //useless, dones't do anything at the moment
-        rightPressed = Input.GetKeyDown("d");
-        mousePressed = Input.GetMouseButtonDown(0);
-
+        if (Input.GetMouseButtonDown(0) && !mousePressed)
+        {
+            mousePressed = true;
+            jumpDelayTime = 0;
+        }
+        if (jumpDelayTime < JUMPDELAY)
+        {
+            jumpDelayTime++;
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Floor" && !canJump) //resets jumps
+        if (collision.gameObject.tag == "Floor" && !canJump && jumpDelayTime == JUMPDELAY) //resets jumps
         {
-
             canJump = true;
         }
     }
@@ -49,24 +56,25 @@ public class playerScript : MonoBehaviour
         float yVel = rb.velocity.y;
         float XVel = rb.velocity.x;
 
-        if(Input.GetMouseButton(0) && canJump) //controls the first part of the jump
+        if(mousePressed && canJump) //controls the first part of the jump
         {
+            mousePressed = false;
             jumping = true;
             canJump = false;
         }
 
-        if (canJump) { //curently bugged. Shit aint working because of complication with the current leftright movement
+        if (canJump && !mousePressed) { //curently bugged. Shit aint working because of complication with the current leftright movement
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * SPEED, yVel);
         }
 
         if (jumping && !canJump) //Controls the jumping
         {
+            jumping = false;
             rb.velocity = new Vector2(XVel, yVel);
             var usingAngle = getAngle();
             var usingX = RECOIL * Mathf.Cos(usingAngle); //Trig stuff I'm super proud of
             var usingY = RECOIL * Mathf.Sin(usingAngle);
-            jumping = false;
             rb.AddForce(new Vector2(usingX, usingY), ForceMode2D.Impulse); 
 
         }
@@ -113,13 +121,13 @@ public class playerScript : MonoBehaviour
         return angle;
     }
 
-    void OnMouseDown()
-    {
-        Debug.Log("Clicked");
-    }
-
-        public bool getCanJump()
+    public bool getCanJump()
     {
         return canJump;
+    }
+
+    public bool getMousePressed()
+    {
+        return mousePressed;
     }
 }

@@ -29,10 +29,8 @@ public class shootScript : MonoBehaviour
     void FixedUpdate()
     {
         var canJump = playerStuff.getCanJump();
-        if (canJump && Input.GetMouseButton(0))
+        if (canJump && playerStuff.getMousePressed())
         {
-            Debug.Log("sus");
-            Debug.Log(launchPoint.transform.position.x);
             var usingX = BULLETSPEED * Mathf.Cos(playerStuff.getShootAngle()); //Trig stuff I'm super proud of
             var usingY = BULLETSPEED * Mathf.Sin(playerStuff.getShootAngle());
             GameObject newBullet = Instantiate(bulletPrefab, new Vector3(launchPoint.transform.position.x, launchPoint.transform.position.y, 0), Quaternion.identity);
