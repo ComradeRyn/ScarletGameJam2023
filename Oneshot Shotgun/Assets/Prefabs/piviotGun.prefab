@@ -148,6 +148,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7579910385738394429, guid: a9454aacd92f6064c81e71855f59de26, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579910385738394429, guid: a9454aacd92f6064c81e71855f59de26, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2118915351
+      objectReference: {fileID: 0}
     - target: {fileID: 7842862100658362140, guid: a9454aacd92f6064c81e71855f59de26, type: 3}
       propertyPath: m_Name
       value: Shotgun
