@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Floor
   - Bullet
+  - Enemy
+  - HitBox
   layers:
   - Default
   - TransparentFX

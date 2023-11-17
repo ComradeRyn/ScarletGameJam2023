@@ -7,6 +7,8 @@ public class playerScript : MonoBehaviour
 {
 
     public Rigidbody2D rb; //varaible hell
+    public GameObject respawnPoint;
+    
     private float dirX = 0f;
     private bool mousePressed;
     private bool jumping = false;
@@ -24,7 +26,9 @@ public class playerScript : MonoBehaviour
     void Start()
     {
         jumpDelayTime = JUMPDELAY;
+        respawnPoint = GameObject.Find("RespawnPoint");
         rb = GetComponent<Rigidbody2D>(); //gets the rb and collider of player
+        respawn();
     }
 
     private void Update()
@@ -43,9 +47,14 @@ public class playerScript : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Floor" && !canJump && jumpDelayTime == JUMPDELAY) //resets jumps
+        if ((collision.gameObject.tag == "Floor" || collision.gameObject.tag == "HitBox") && !canJump && jumpDelayTime == JUMPDELAY) //resets jumps
         {
             canJump = true;
+        }
+
+        if(collision.gameObject.tag == "Enemy")
+        {
+            respawn();
         }
     }
 
@@ -127,5 +136,15 @@ public class playerScript : MonoBehaviour
     public bool getMousePressed()
     {
         return mousePressed;
+    }
+
+    public void setCanJump(bool x)
+    {
+        canJump = x;
+    }
+
+    public void respawn()
+    {
+        rb.transform.position = respawnPoint.transform.position;
     }
 }

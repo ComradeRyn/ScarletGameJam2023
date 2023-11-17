@@ -8,7 +8,6 @@ public class shootScript : MonoBehaviour
 {
     public GameObject bulletPrefab;
     private GameObject launchPoint;
-    private string localPath;
 
     private playerScript playerStuff;
 
@@ -19,10 +18,6 @@ public class shootScript : MonoBehaviour
         playerStuff = GameObject.Find("Player").GetComponent<playerScript>();
         launchPoint = this.gameObject;
 
-       // localPath = "Assets/Prefabs/bullet.prefab";
-       // localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
-
-      //  PrefabUtility.SaveAsPrefabAssetAndConnect(bulletPrefab, localPath, InteractionMode.UserAction);
     }
 
     // Update is called once per frame
