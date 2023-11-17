@@ -15,12 +15,6 @@ public class EnemyScript : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<playerScript>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(hitBox.transform.position);
-    }
-
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -33,15 +27,15 @@ public class EnemyScript : MonoBehaviour
 
     public void Kill()
     {
-        hitBox.GetComponent<BoxCollider2D>().enabled = false;
-        Enemy.GetComponent<BoxCollider2D>().enabled = false;
-        Enemy.GetComponent<SpriteRenderer>().enabled = false;
+        this.hitBox.GetComponent<BoxCollider2D>().enabled = false;
+        this.Enemy.GetComponent<BoxCollider2D>().enabled = false;
+        this.Enemy.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void Respawn()
     {
-        Enemy.GetComponent<BoxCollider2D>().enabled = true;
-        Enemy.GetComponent<SpriteRenderer>().enabled = true;
-        hitBox.GetComponent<BoxCollider2D>().enabled = true;
+        this.Enemy.GetComponent<BoxCollider2D>().enabled = true;
+        this.Enemy.GetComponent<SpriteRenderer>().enabled = true;
+        this.hitBox.GetComponent<BoxCollider2D>().enabled = true;
     }
 }

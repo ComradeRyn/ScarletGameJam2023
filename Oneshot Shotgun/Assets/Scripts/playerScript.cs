@@ -14,12 +14,14 @@ public class playerScript : MonoBehaviour
     private bool jumping = false;
     private bool canJump = true;
     private bool returnedToGround = true;
+    private bool jumpKill = false;
 
     [SerializeField] private float SPEED;
     [SerializeField] private float RECOIL;
 
     [SerializeField] private int JUMPDELAY;
     private int jumpDelayTime;
+
 
 
 
@@ -47,8 +49,8 @@ public class playerScript : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-
-        if ((collision.gameObject.tag == "Floor" || collision.gameObject.tag == "HitBox") && !canJump && jumpDelayTime == JUMPDELAY) //resets jumps
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Floor" && !canJump && jumpDelayTime == JUMPDELAY) //resets jumps
         {
             canJump = true;
             returnedToGround = true;
@@ -58,6 +60,14 @@ public class playerScript : MonoBehaviour
         {
             respawn();
             returnedToGround = true;
+        }
+
+        if(collision.gameObject.tag == "HitBox")
+        {
+            canJump = true;
+            var Parent = collision.gameObject.transform.parent;
+            rb.AddForce(new Vector2(0, RECOIL), ForceMode2D.Impulse);
+            Parent.GetComponent<EnemyScript>().Kill();
         }
     }
 

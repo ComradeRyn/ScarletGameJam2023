@@ -14,6 +14,10 @@ public class bulletScript : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.tag == "HitBox")
+        {
+            collision.gameObject.transform.parent.GetComponent<EnemyScript>().Kill();
+        }
         if(collision.gameObject.tag == "Bullet" || collision.gameObject.tag != "Player")
         {
             Destroy(this.gameObject);

@@ -17,8 +17,7 @@ public class gameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(player.getCanJump());
-        if (player.getReturnedToGround())
+        if (player.getReturnedToGround() && player.getCanJump())
         {
             for(int i = 0; i < enemies.transform.childCount; i++)
             {
