@@ -177,8 +177,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4230410278425347614}
+  respawnPoint: {fileID: 0}
   SPEED: 8.5
-  RECOIL: 20
+  RECOIL: 23
   JUMPDELAY: 20
 --- !u!1001 &7200428119570351648
 PrefabInstance:
