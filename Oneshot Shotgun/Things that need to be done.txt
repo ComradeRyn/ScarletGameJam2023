@@ -7,7 +7,7 @@ STUFF THAT WE NEED TO DO FOR THE GAMEJAM
 - Finish adding jump mechanics -DONE-
 
 *** ACCESSORY STUFF ***
-- Create ammo refill cans
+- Create ammo refill cans **DONE**
 - Add functionality to them
 
 *** ENEMY STUFF ***
