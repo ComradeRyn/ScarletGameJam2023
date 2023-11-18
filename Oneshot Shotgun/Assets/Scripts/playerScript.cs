@@ -61,6 +61,7 @@ public class playerScript : MonoBehaviour
         {
             respawn();
             respawnAmmo = true;
+            respawnEnemy = true;
         }
 
         if(collision.gameObject.tag == "HitBox")
