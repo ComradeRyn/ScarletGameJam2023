@@ -6,12 +6,14 @@ public class gameController : MonoBehaviour
 {
     private playerScript player;
     private GameObject enemies;
+    private GameObject ammo;
     
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<playerScript>();
         enemies = GameObject.Find("Enemies");
+        ammo = GameObject.Find("ammo");
     }
 
     // Update is called once per frame
