@@ -13,8 +13,8 @@ public class playerScript : MonoBehaviour
     private bool mousePressed;
     private bool jumping = false;
     private bool canJump = true;
-    private bool returnedToGround = true;
-    private bool jumpKill = false;
+    private bool respawnAmmo = true;
+    private bool respawnEnemy = true;
 
     [SerializeField] private float SPEED;
     [SerializeField] private float RECOIL;
@@ -49,17 +49,18 @@ public class playerScript : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag == "Floor" && !canJump && jumpDelayTime == JUMPDELAY) //resets jumps
+
+        if (collision.gameObject.tag == "Floor" && jumpDelayTime == JUMPDELAY) //resets jumps
         {
             canJump = true;
-            returnedToGround = true;
+            respawnAmmo = true;
+            respawnEnemy = true;
         }
 
         if(collision.gameObject.tag == "Enemy")
         {
             respawn();
-            returnedToGround = true;
+            respawnAmmo = true;
         }
 
         if(collision.gameObject.tag == "HitBox")
@@ -69,6 +70,7 @@ public class playerScript : MonoBehaviour
             rb.AddForce(new Vector2(0, RECOIL), ForceMode2D.Impulse);
             Parent.GetComponent<EnemyScript>().Kill();
         }
+
     }
 
     void FixedUpdate()
@@ -81,7 +83,8 @@ public class playerScript : MonoBehaviour
             mousePressed = false;
             jumping = true;
             canJump = false;
-            returnedToGround = false;
+            respawnAmmo = false;
+            respawnEnemy = false;
         }
 
         if (canJump && !mousePressed) {
@@ -162,8 +165,13 @@ public class playerScript : MonoBehaviour
         rb.transform.position = respawnPoint.transform.position;
     }
 
-    public bool getReturnedToGround()
+    public bool getRespawnAmmo()
     {
-        return returnedToGround;
+        return respawnAmmo;
+    }
+
+    public bool getRespawnEnemy()
+    {
+        return respawnEnemy;
     }
 }
