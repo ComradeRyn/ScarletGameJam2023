@@ -79,6 +79,11 @@ public class playerScript : MonoBehaviour
         float yVel = rb.velocity.y;
         float XVel = rb.velocity.x;
 
+        if (Input.GetKey("r"))
+        {
+            respawn();
+        }
+
         if(mousePressed && canJump) //controls the first part of the jump
         {
             mousePressed = false;
